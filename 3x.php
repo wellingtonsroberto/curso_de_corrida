@@ -1,3 +1,27 @@
+<?php
+if(file_exists("init.php")) {
+  require "init.php";   
+} else {
+  echo "Arquivo init.php nao foi encontrado";
+  exit;
+}
+
+if(!function_exists("Abre_Conexao")) {
+  echo "Erro o arquivo init.php foi auterado, nao existe a função Abre_Conexao";
+  exit;
+}
+
+Abre_Conexao();
+$re = mysql_query("SELECT * FROM tb_tipo, tb_comp ;");
+if(mysql_errno() != 0) {
+  if(!isset($erros)) {
+    echo "Erro o arquivo init.php foi auterado, nao existe $erros";
+    exit;
+  }
+  echo $erros[mysql_errno()];
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
