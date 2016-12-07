@@ -10,7 +10,7 @@
         <meta name="description" content="Violate Responsive Admin Template">
         <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
 
-        <title>Super Admin Responsive Template</title>
+        <title>Login Corrida de Rua</title>
             
         <!-- CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">

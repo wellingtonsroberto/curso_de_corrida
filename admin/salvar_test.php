@@ -7,6 +7,8 @@ $test_dist        = $_POST["test_dist"];
 $test_trein      = $_POST["test_trein"];
 $test_pace        = $_POST["test_pace"];
 $test_repet        = $_POST["test_repet"];
+$test_plan        = $_POST["test_plan"];
+$test_tipo        = $_POST["test_tipo"];
 
 if(file_exists("init2.php")) {
 	require "init2.php";		
@@ -21,7 +23,7 @@ if(!function_exists("Abre_Conexao")) {
 }
 
 Abre_Conexao();
-if(@mysql_query("INSERT INTO tb_test VALUES (	NULL ,'$test_veloc', '$test_temp', '$test_tiro', '$test_dist', '$test_trein', '$test_pace', '$test_repet'  )")) {
+if(@mysql_query("INSERT INTO tb_teste VALUES (	NULL ,'$test_veloc', '$test_temp', '$test_tiro', '$test_dist', '$test_trein', '$test_pace', '$test_repet', '$test_plan', '$test_tipo'  )")) {
 
 	if(mysql_affected_rows() == 1){
 		echo "Registro efetuado com sucesso<br />";
@@ -40,4 +42,4 @@ if(@mysql_query("INSERT INTO tb_test VALUES (	NULL ,'$test_veloc', '$test_temp',
 
 }
 ?>
-<a href="index.php">Voltar</a>
+<meta http-equiv="refresh" content=1;url="tables.php">

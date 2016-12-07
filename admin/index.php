@@ -48,13 +48,13 @@ if(!function_exists("Abre_Conexao")) {
                 <!-- Side Menu -->
                 <ul class="list-unstyled side-menu">
                     <li class="active">
-                        <a class="sa-side-home" href="index-2.html">
-                            <span class="menu-item">Dashboard</span>
+                        <a class="sa-side-home" href="index.php">
+                            <span class="menu-item">Inicio</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-table" href="tables.html">
-                            <span class="menu-item">Tables</span>
+                        <a class="sa-side-table" href="tables.php">
+                            <span class="menu-item">Treinos</span>
                         </a>
                     </li>
                     <li>
@@ -91,12 +91,16 @@ require 'check.php';
 
             
              <div class="col-md-3 m-b-15" style="left: 220px;top: 20px;">
+                                     <label>Tipo de Corrida</label>
+                    <select class="form-control m-b-10" id="test_tipo" name="test_tipo">
+                        <option>Continua</option>
+                        <option>Alternada</option>
+                    </select>
                             <label>Velocidade do Teste</label>
                             <input type="text" id="test_veloc" name="test_veloc" class="form-control m-b-10" placeholder="Km/h">
                        <label>Tempo</label>
                          <input type="text" class="input-sm form-control mask-time" id="test_temp" name="test_temp" placeholder="..." style=" height: 34px;">
-                         <label>Tempo de Cada Tiro</label>
-                            <input type="text" class="input-sm form-control mask-time" id="test_tiro" name="test_tiro" placeholder="..." style=" height: 34px;">
+                    
                         </div>
 
              <div class="col-md-3 m-b-10" style="left: 220px;top: 20px;">
@@ -104,9 +108,16 @@ require 'check.php';
                             <input type="text" id="test_dist" name="test_dist" class="form-control m-b-10" placeholder="Metros">
                           <label>Treino Complementar</label>
                     <select class="form-control m-b-10" id="test_trein" name="test_trein">
-                        <option>Option1</option>
+                        <option>Flexibilidade</option>
+                        <option>Força</option>
+                        <option>Core</option>
                     </select>
-                  
+                           <label>Plano de Treino</label>
+                    <select class="form-control m-b-10" id="test_plan" name="test_plan">
+                        <option>5km-10km</option>
+                        <option>21km</option>
+                        <option>Maratona</option>
+                    </select>
                             
                         </div>
                  
@@ -115,7 +126,9 @@ require 'check.php';
                             <input type="text" id="test_pace" name="test_pace" class="form-control m-b-10" placeholder="Km">
                         <label>Repetições</label>
                             <input type="text" id="test_repet" name="test_repet" class="form-control m-b-10" placeholder="...">
-                   <button type="submit" name="Submit" value="Salvar" class="btn btn-lg m-r-5">Salvar</button>
+                   <label style="margin-top: 0px;">Tempo de Cada Tiro</label>
+                            <input type="text" class="input-sm form-control mask-time" id="test_tiro" name="test_tiro" placeholder="..." style=" height: 34px;">
+                   <button type="submit" name="Submit" value="Salvar" class="btn btn-lg m-r-5" style="margin-top: 15px;">Salvar</button>
                     </div>
                         </div>
 
