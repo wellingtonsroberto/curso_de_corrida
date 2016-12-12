@@ -17,17 +17,6 @@ if(!function_exists("Abre_Conexao")) {
     echo "Erro o arquivo init2.php foi auterado, nao existe a função Abre_Conexao";
     exit;
 }
-
-Abre_Conexao();
-$re = mysql_query("SELECT * FROM tb_fator ORDER BY id_fator");
-if(mysql_errno() != 0) {
-    if(!isset($erros)) {
-        echo "Erro o arquivo init2.php foi auterado, nao existe \$erros";
-        exit;
-    }
-    echo $erros[mysql_errno()];
-    exit;
-}   
 ?>
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
@@ -70,18 +59,18 @@ if(mysql_errno() != 0) {
                             <span class="menu-item">Inicio</span>
                         </a>
                     </li>
-                    <li>
-
+                        <li>
                         <a class="sa-side-ui" href="fator_dia.php">
                             <span class="menu-item">Cadastro de Fator</span>
                         </a>
                     </li>
+                    
                     <li>
                         <a class="sa-side-table" href="tables.php">
-                            <span class="menu-item">Tabela de Treinos</span>
+                            <span class="menu-item">Treinos</span>
                         </a>
                     </li>
-                        <li>
+                                  <li>
                         <a class="sa-side-chart" href="tables_fator.php">
                             <span class="menu-item">Tabela de Fator</span>
                         </a>
@@ -108,7 +97,7 @@ if(mysql_errno() != 0) {
  <br>
  <br>
  </body>
-    <form id="form1" name="form1" method="post" action="salvar_test.php">
+    <form id="form1" name="form1" method="post" action="salvar_fator.php">
  <table border="0">
    <tr><td><label style="
     margin-left: 608px;
@@ -137,23 +126,19 @@ if(mysql_errno() != 0) {
                         <option>6</option>
                         <option>7</option>
                         <option>8</option>
-                    </select></td>
-
+                    </select></td> 
                     <td><label style="
     margin-left: 10px;
-">Fator</label>
-                   <select name="fator_test" id="fator_test" class="form-control m-b-10" style="
+">Vezes por Semana</label>
+                    <select class="form-control m-b-10" id="test_vzs" name="test_vzs" style="
     width: 66px;
     margin-left: 10px;
-">        
-<?php
-while($l = mysql_fetch_array($re)) {
-    $id     = $l["id_fator"];
-    $estado = $l["test_fator"];            
-    echo "<option value=\"$id\">  $estado</option>\n";
-}
-?>
-      </select>      </td> </tr>
+">
+                        <option>3x</option>
+                        <option>4x</option>
+                        <option>5x</option>
+                        <option>6x</option>
+                    </select></td> </tr>
 </table>
 
                    
@@ -165,82 +150,18 @@ while($l = mysql_fetch_array($re)) {
 
          
             
-             <div class="col-md-3 m-b-15" style="left: 220px;top: 20px;">
-                                     <label>Tipo de Corrida</label>
-                    <select class="form-control m-b-10" id="test_tipo" name="test_tipo">
-                        <option>Continua</option>
-                        <option>Alternada</option>
-                    </select>
-
-                
-                          <div class="col-md-4 m-b-15">
-                          <label>Velocidade</label>
-                            <div class="p-relative" style="
-    width: 310px;
-">
-                                <input type="text" class="form-control input-sm spinner-6 spinedit" id="test_veloc" name="test_veloc" style="
+             <div class="col-lg-4" style="left: 220px;top: 20px;">
+                                 <label style="
+    margin-left: 340px;
+">Valor do Fator</label>
+                                <input type="text" class="form-control input-focused" id="test_fator" name="test_fator" style="
     width: 317px;
     height: 32px;
+    margin-left: 340px;
 " />
                             </div>
-                            <label style="margin-top: 8px;">Tempo</label>
-                            <div class="input-icon datetime-pick time-only" style=" height: 34px;">
-                                <input data-format="hh:mm:ss" type="text" class="form-control input-sm" id="test_temp" name="test_temp" style="height: 33px;width: 317px;margin-top: 5px;" />
-                                <span class="add-on">
-                                    <i class="sa-plus"></i>
-                                </span>
-                            </div>
-                        </div>
-                    
-                        </div>
-
-             <div class="col-md-3 m-b-10" style="left: 220px;top: 20px;">
-                            <label>Distancia Teste</label>
-                                    <div class="p-relative">
-                            <input type="text" id="test_dist" name="test_dist" class="form-control input-sm spinner-6 spinedit">
-                            </div>
-                          <label style="
-    margin-top: 15px;
-">Treino Complementar</label>
-                    <select class="form-control m-b-10" id="test_trein" name="test_trein">
-                        <option>Flexibilidade</option>
-                        <option>Força</option>
-                        <option>Core</option>
-                    </select>
-                           <label style="
-    margin-top: 0px;
-">Plano de Treino</label>
-                    <select class="form-control m-b-10" id="test_plan" name="test_plan">
-                        <option>5km-10km</option>
-                        <option>21km</option>
-                        <option>Maratona</option>
-                    </select>
-                            
-                        </div>
-                 
-             <div class="col-md-3 m-b-15" style="left: 220px;top: 20px;">
-                            <label>PACE</label>
-                            <input type="text" id="test_pace" name="test_pace" class="form-control m-b-10" placeholder="..." >
-                         <label>Repetições</label>
-                            <div class="p-relative" style="
-    width: 310px;
-">
-                                <input type="text" class="form-control input-sm spinner-1 spinedit" id="test_repet" name="test_repet" style="
-    width: 317px;
-    height: 32px;
-" />
-                  <label style="
-    margin-top: 12px;
-">Quantidade de Tiros</label>
-                            <div class="p-relative" style="
-    width: 310px;
-">
-                                <input type="text" class="form-control input-sm spinner-1 spinedit" id="test_tiro" name="test_tiro" style="
-    width: 317px;
-    height: 35px;
-    margin-top: 0px;
-"/>
-                   <button type="submit" name="Submit" value="Salvar" class="btn btn-lg m-r-5" style="margin-top: 15px;">Salvar</button>
+                           
+                   <button type="submit" name="Submit" value="Salvar" class="btn btn-lg m-r-5" style="margin-top: 105px;margin-left: 240px;"">Salvar</button>
                     </div>
                         </div>
 

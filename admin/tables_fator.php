@@ -110,7 +110,7 @@ if(!function_exists("Abre_Conexao")) {
 }
 
 Abre_Conexao();
-$re = mysql_query("SELECT * FROM tb_teste;");
+$re = mysql_query("SELECT * FROM tb_fator;");
 if(mysql_errno() != 0) {
     if(!isset($erros)) {
         echo "Erro o arquivo init2.php foi auterado, nao existe $erros";
@@ -257,7 +257,7 @@ if(mysql_errno() != 0) {
 
                 <!-- Table Hover -->
                 <div class="block-area" id="tableHover">
-                    <h3 class="block-title">Cadastro de Testes</h3>
+                    <h3 class="block-title">Cadastro de Fatores</h3>
                     <br>
                     <br>
 
@@ -269,51 +269,40 @@ if(mysql_errno() != 0) {
                             <i class="sa-top-updates" style="
     margin-left: 23px;
 "></i>
-                                <p>Cadastrar Teste</p>
+                                <p>Cadastrar Fator</p>
                             </a>
                             </div>
                         <table class="table table-bordered table-hover tile">
                             <thead>
                                 <tr>
                                      <th>Opções</th>
-                                    <th>Tipo de Corrida</th>
-                                    <th>Velocidade do Teste</th>
-                                    <th>Tempo de Teste</th>
-                                    <th>Quantidade de Tiros</th>
-                                    <th>Distancia Teste</th>
-                                    <th>Treino Complementar</th>
-                                    <th>Quantidade de Repetição</th>
+                                    <th>Valor</th>
                                     <th>Dia</th>
                                     <th>Semana</th>
+                                    <th>Vezes por Semana</th>
+                             
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
 while($l = mysql_fetch_array($re)) {
-    $id_teste          = $l["id_teste"];
-    $test_tipo         = $l["test_tipo"];
-    $test_veloc     = $l["test_veloc"];
-    $test_temp       = $l["test_temp"];
-    $test_tiro     = $l["test_tiro"];
-    $test_dist       = $l["test_dist"];
-    $test_trein     = $l["test_trein"];
-    $test_repet       = $l["test_repet"];
+    $id_fator       = $l["id_fator"];
+    $test_fator     = $l["test_fator"];
     $test_dia       = $l["test_dia"];
     $test_sem       = $l["test_sem"];
-    
+    $test_vzs       = $l["test_vzs"];
+  
     
 echo "
     <tr>    
-        <td><a href=\"excluir.php?id=$id_teste\">[Excluir]</a></td>
-        <td>&nbsp;$test_tipo</td>
-        <td>&nbsp;$test_veloc</td>
-        <td>&nbsp;$test_temp</td>
-        <td>&nbsp;$test_tiro</td>
-        <td>&nbsp;$test_dist</td>
-        <td>&nbsp;$test_trein</td>
-        <td>&nbsp;$test_repet</td>
+        <td><a href=\"excluir.php?id=$id_fator\">[Excluir]</a></td>
+
+
+        <td>&nbsp;$test_fator</td>
         <td>&nbsp;$test_dia</td>
         <td>&nbsp;$test_sem</td>
+        <td>&nbsp;$test_vzs</td>
+
     </tr>\n";
 }   
 @mysql_close();

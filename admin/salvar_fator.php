@@ -3,6 +3,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 $test_fator      = $_POST["test_fator"];
 $test_dia        = $_POST["test_dia"];
 $test_sem        = $_POST["test_sem"];
+$test_vzs        = $_POST["test_vzs"];
 
 if(file_exists("init2.php")) {
 	require "init2.php";		
@@ -17,7 +18,7 @@ if(!function_exists("Abre_Conexao")) {
 }
 
 Abre_Conexao();
-if(@mysql_query("INSERT INTO tb_teste VALUES (	NULL ,'$test_fator', '$test_dia', '$test_sem'  )")) {
+if(@mysql_query("INSERT INTO tb_fator VALUES (	NULL ,'$test_fator', '$test_dia', '$test_sem', '$test_vzs'  )")) {
 
 	if(mysql_affected_rows() == 1){
 		echo "Registro efetuado com sucesso<br />";
@@ -36,4 +37,4 @@ if(@mysql_query("INSERT INTO tb_teste VALUES (	NULL ,'$test_fator', '$test_dia',
 
 }
 ?>
-<meta http-equiv="refresh" content=1;url="tables.php">
+<meta http-equiv="refresh" content=1;url="tables_fator.php">
